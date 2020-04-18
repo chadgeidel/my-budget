@@ -3,6 +3,7 @@ using MyBudget.ImportTypes;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace MyBudget
 {
@@ -10,13 +11,19 @@ namespace MyBudget
     {
         public void ImportFiles()
         {
-            var readDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\OneDrive\\Documents\\Bank\\Budget\\2020 Statements";
+            var readDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\OneDrive\\Documents\\Bank\\2020 Statements";
             var di = new System.IO.DirectoryInfo(readDir);
 
             var records = new List<IBankExport>();
 
             foreach (var file in di.GetFiles())
             {
+                // ignore non-april files
+                if (!file.Name.Contains("2020-04"))
+                {
+                    continue;
+                }
+
                 Console.WriteLine(file.ToString());
 
                 if (file.Name.ToLower().Contains("bhfcu checking"))
@@ -42,13 +49,30 @@ namespace MyBudget
                 }
             }
 
-            using (var writer = File.AppendText($"CombinedRecords-{DateTime.Now.ToFileTime()}.csv"))
+            //var jan = records.Where(r => r.Date.Month == 1);
+            //var feb = records.Where(r => r.Date.Month == 2);
+            //var mar = records.Where(r => r.Date.Month == 3);
+            var apr = records.Where(r => r.Date.Month == 4);
+            var individualCount = apr.Count(); // jan.Count() + feb.Count() + mar.Count();
+            if (individualCount != records.Count())
             {
-                writer.WriteLine("Date,Details,Debit,Credit,RecordType");
-                foreach (var record in records)
-                {
-                    writer.WriteLine(record);
-                }
+                throw new Exception("Records are missing in individual months!");
+            }
+
+            //WriteToCsv(records, $"CombinedRecords-{DateTime.Now.ToFileTime()}.csv");
+            //WriteToCsv(jan, $"January-{DateTime.Now.ToFileTime()}.csv");
+            //WriteToCsv(feb, $"February-{DateTime.Now.ToFileTime()}.csv");
+            //WriteToCsv(mar, $"March-{DateTime.Now.ToFileTime()}.csv");
+            WriteToCsv(apr, $"April-{DateTime.Now.ToFileTime()}.csv");
+        }
+
+        private static void WriteToCsv(IEnumerable<IBankExport> records, string filename)
+        {
+            using var writer = File.AppendText(filename);
+            writer.WriteLine("Date,Details,Debit,Credit,RecordType");
+            foreach (var record in records)
+            {
+                writer.WriteLine(record);
             }
 
             // what am I doing wrong here?
