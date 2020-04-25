@@ -14,6 +14,10 @@ namespace MyBudget.ImportTypes
         public decimal Debit { get => TransactionAmount > 0 ? 0 : -TransactionAmount; }
         public decimal Credit { get => TransactionAmount < 0 ? 0 : TransactionAmount; }
         public string Institution => RecordType; 
+        public string ToCsvString()
+        {
+            return $"{Date:MM/dd/yyyy},\"{Details}\",{Debit},{Credit},{RecordType}";
+        }
 
         [FieldConverter(ConverterKind.Date, "MM/dd/yyyy")]
         [FieldQuoted('"')]

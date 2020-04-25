@@ -49,7 +49,7 @@ namespace MyBudget
             writer.WriteLine("Date,Details,Debit,Credit,RecordType");
             foreach (var record in records)
             {
-                writer.WriteLine(record);
+                writer.WriteLine(record.ToCsvString());
             }
 
             // what am I doing wrong here?

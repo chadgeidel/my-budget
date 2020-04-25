@@ -10,5 +10,6 @@ namespace MyBudget.ImportTypes
         public decimal Debit { get; }
         public decimal Credit { get; }
         public string Institution { get; }
+        public string ToCsvString();
     }
 }
