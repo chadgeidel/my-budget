@@ -7,7 +7,8 @@ namespace MyBudget
         static void Main(string[] args)
         {
             var bi = new BudgetImporter();
-            bi.ImportFiles();
+            var readDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\OneDrive\\Documents\\Bank\\2020 Statements";
+            bi.ImportFiles(4, readDir);
         }
     }
 }
