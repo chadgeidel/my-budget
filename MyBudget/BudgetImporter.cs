@@ -10,8 +10,9 @@ namespace MyBudget
 {
     class BudgetImporter
     {
-        public void ImportFiles(int monthToImport, string sourceDir)
+        public void ImportFiles(Months importMonth, string sourceDir)
         {
+            var monthToImport = (int)importMonth;
             var di = new DirectoryInfo(sourceDir);
             var monthPattern = $"*{DateTime.Now.Year}-{monthToImport:D2}*";
             var records = new List<IBankExport>();
