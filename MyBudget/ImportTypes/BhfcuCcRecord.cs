@@ -11,7 +11,7 @@ namespace MyBudget.ImportTypes
 
         // BankExport fields
         public DateTime Date => TransactionDate;
-        public string Details => Description;
+        public string Details => Memo;
         public decimal Debit => -AmountDebit ?? 0;
         public decimal Credit => AmountCredit ?? 0;
         public string Institution => RecordType;
