@@ -16,7 +16,7 @@ namespace MyBudget.ImportTypes
         public string Institution => RecordType;
         public string ToCsvString()
         {
-            return $"{Date:MM/dd/yyyy},\"{Details}\",{Debit},{Credit},{RecordType}";
+            return this.ToString();
         }
 
         [FieldConverter(ConverterKind.Date, "MM/dd/yyyy")]

@@ -11,13 +11,13 @@ namespace MyBudget.ImportTypes
 
         // IBankExport fields
         public DateTime Date => TransactionDate;
-        public string Details => Description;
+        public string Details => String.IsNullOrWhiteSpace(Memo) ? Description : Memo; // we want Memo, but it's Memo empty
         public decimal Debit => -AmountDebit ?? 0;
         public decimal Credit => AmountCredit ?? 0;
         public string Institution => RecordType;
         public string ToCsvString()
         {
-            return $"{Date:MM/dd/yyyy},\"{Details}\",{Debit},{Credit},{RecordType}";
+            return this.ToString();
         }
 
         [FieldQuoted('"')]
@@ -66,17 +66,7 @@ namespace MyBudget.ImportTypes
 
         public override int GetHashCode()
         {
-            HashCode hash = new HashCode();
-            hash.Add(TransactionNumber);
-            hash.Add(TransactionDate);
-            hash.Add(Description);
-            hash.Add(Memo);
-            hash.Add(AmountDebit);
-            hash.Add(AmountCredit);
-            hash.Add(Balance);
-            hash.Add(CheckNumber);
-            hash.Add(Fees);
-            return hash.ToHashCode();
+            return HashCode.Combine(TransactionDate, Description, Memo, AmountDebit, AmountCredit, Balance, CheckNumber, Fees);
         }
 
         public override string ToString()

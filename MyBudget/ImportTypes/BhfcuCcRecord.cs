@@ -11,13 +11,13 @@ namespace MyBudget.ImportTypes
 
         // BankExport fields
         public DateTime Date => TransactionDate;
-        public string Details => Memo;
+        public string Details => String.IsNullOrWhiteSpace(Memo) ? Description : Memo; // we want Memo, but it's Memo empty;
         public decimal Debit => -AmountDebit ?? 0;
         public decimal Credit => AmountCredit ?? 0;
         public string Institution => RecordType;
         public string ToCsvString()
         {
-            return $"{Date:MM/dd/yyyy},\"{Details}\",{Debit},{Credit},{RecordType}";
+            return this.ToString();
         }
 
         [FieldQuoted('"')]

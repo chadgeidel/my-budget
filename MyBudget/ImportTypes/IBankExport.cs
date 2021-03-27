@@ -1,5 +1,4 @@
-﻿using FileHelpers;
-using System;
+﻿using System;
 
 namespace MyBudget.ImportTypes
 {
