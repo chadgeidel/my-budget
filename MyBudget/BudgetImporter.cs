@@ -27,6 +27,7 @@ namespace MyBudget
             { "comcast", "Utilities" },
             { "xfinity", "Utilities" },
             { "vzwrlss", "Utilities" },
+            { "ctyofdenveronline", "Utilities" },
             // insurance
             { "northwestern mu", "Insurance" },
             { "geico", "Insurance" },
@@ -50,6 +51,8 @@ namespace MyBudget
             { "ulta", "Health" },
             { "loreal", "Health" },
             { "alta vista dermato", "Health" },
+            { "velosoul", "Health" },
+            { "quest diag", "Health" },
             // doggos
             { "petsmart", "Doggos" },
             { "krisers", "Doggos" },
@@ -63,8 +66,9 @@ namespace MyBudget
             { "metro express", "Auto" },
             { "co motor vehicle", "Auto" },
             { "prkg denver", "Auto" },
+            { "7-eleven", "Auto" },
+            { "circle k", "Auto" },
             // restaurants
-
             { "tejado", "Restaurants" },
             { "good times", "Restaurants" },
             { "tasty house", "Restaurants" },
@@ -72,6 +76,7 @@ namespace MyBudget
             { "illegal pete", "Restaurants" },
             { "starbucks", "Restaurants" },
             { "corvus", "Restaurants" },
+            { "snarfosaurus", "Restaurants" },
             // booze
             { "hb liquor", "Booze" },
             { "total wine", "Booze" },
@@ -94,6 +99,7 @@ namespace MyBudget
             { "cost plus wld", "Home Improvement" },
             { "wm supercent", "Home Improvement" },
             { "lowes", "Home Improvement" },
+            { "lowe's", "Home Improvement" },
             { "homedepot.com", "Home Improvement" },
             { "home depot", "Home Improvement" },
             // clothes
