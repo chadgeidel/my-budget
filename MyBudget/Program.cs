@@ -25,7 +25,7 @@ namespace MyBudget
             //bi.WriteToCsv($"{DateTime.Now.Year}-cumulative-{DateTime.Now.ToFileTime()}.csv");
 
             // month
-            Months individualMonth = Months.March;
+            Months individualMonth = Months.April;
             bi.ImportFiles(individualMonth, readDir);
             bi.WriteToCsv($"{DateTime.Now.Year}-{individualMonth}-{DateTime.Now.ToFileTime()}.csv");
         }
