@@ -5,29 +5,29 @@ namespace MyBudget
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var bi = new BudgetImporter();
-            var readDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\OneDrive\\Budget\\Bank\\2021 Statements";
+            var readDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\OneDrive\\Budget\\Bank\\{DateTime.Today.Year} Statements";
+            if (!Directory.Exists(readDir))
+            {
+                Console.WriteLine($"Couldn't find {readDir}");
+                return;
+            }
 
-            // all
-            //foreach (Months month in Enum.GetValues(typeof(Months)))
-            //{
-            //    if (!Directory.Exists(readDir))
-            //    {
-            //        Console.WriteLine($"Couldn't find {readDir}");
-            //        break;
-            //    }
-            //    Console.WriteLine($"Importing {month}");
-            //    bi.ImportFiles(month, readDir);
-            //}
-            //Console.WriteLine("Finshed importing");
-            //bi.WriteToCsv($"{DateTime.Now.Year}-cumulative-{DateTime.Now.ToFileTime()}.csv");
+            // cumulative this year
+            foreach (Months month in Enum.GetValues(typeof(Months)))
+            {
+                Console.WriteLine($"Importing {month}");
+                bi.ImportFiles(month, readDir);
+            }
+            Console.WriteLine("Finshed importing");
+            bi.WriteToCsv($"{DateTime.Now.Year}-cumulative-{DateTime.Now.ToFileTime()}.csv");
 
-            // month
-            Months individualMonth = Months.April;
-            bi.ImportFiles(individualMonth, readDir);
-            bi.WriteToCsv($"{DateTime.Now.Year}-{individualMonth}-{DateTime.Now.ToFileTime()}.csv");
+            //// one month
+            //Months individualMonth = Months.May;
+            //bi.ImportFiles(individualMonth, readDir);
+            //bi.WriteToCsv($"{DateTime.Now.Year}-{individualMonth}-{DateTime.Now.ToFileTime()}.csv");
         }
     }
 }
