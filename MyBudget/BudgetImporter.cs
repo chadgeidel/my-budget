@@ -56,6 +56,18 @@ namespace MyBudget
             }
         }
 
+        public void WriteToCsv(string filename, Months specificMonth)
+        {
+            using var writer = File.AppendText(filename);
+            writer.WriteLine("Date,Details,Debit,Credit,RecordType,Bucket");
+            foreach (var record in records
+                .Where(m => m.Date.Month == (int)specificMonth)
+                .OrderBy(r => r.Date))
+            {
+                writer.WriteLine(record.ToCsvString() + $",{GetBucket(record.Details)}");
+            }
+        }
+
         private static string GetBucket(string description)
         {
             return TermMapping.SearchTermMapping.FirstOrDefault(kvp => description.ToLower().Contains(kvp.Key)).Value ?? string.Empty;
