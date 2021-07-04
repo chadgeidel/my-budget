@@ -9,6 +9,7 @@ namespace MyBudget
             // income
             { "colorado state", "Income" },
             { "interest payment", "Income" },
+            { "mobile deposit", "Income" }, // check deposit from iOS app
             // tax
             { "irs treas", "Tax" }, // federal refund
             { "costtaxrfd", "Tax" }, // co state refund
@@ -53,7 +54,6 @@ namespace MyBudget
             { "ulta", "Health" },
             { "loreal", "Health" },
             { "alta vista dermato", "Health" },
-            { "velosoul", "Health" },
             { "quest diag", "Health" },
             { "cu medicine", "Health" },
             { "endodontics", "Health" },
@@ -74,6 +74,7 @@ namespace MyBudget
             { "7-eleven", "Auto" },
             { "circle k", "Auto" },
             { "conoco", "Auto" },
+            { "parkwell", "Auto" },
             // restaurants
             { "tejado", "Restaurants" },
             { "good times", "Restaurants" },
@@ -87,13 +88,16 @@ namespace MyBudget
             { "rheinlander bakery", "Restaurants" },
             { "new image restaura", "Restaurants" },
             { "cochino taco", "Restaurants" },
+            { "park burger", "Restaurants" },
+            { "birdcall", "Restaurants" },
+            { "mike's famous pizz", "Restaurants" },
+            { "tankfoods", "Restaurants" },
             // booze
             { "hb liquor", "Booze" },
             { "total wine", "Booze" },
             { "argonaut", "Booze" },
             { "sobo liquors", "Booze" },
-            // apple
-            { "apple.com", "Apple" },
+            { "lone tree brewing", "Booze" },
             // entertainment
             { "netflix", "Entertainment" },
             { "youtube", "Entertainment" },
@@ -101,12 +105,18 @@ namespace MyBudget
             { "level 7", "Entertainment" },
             { "humblebundle", "Entertainment" },
             { "humanutility", "Entertainment" }, // move slow and fix things stickers (donation to charity)
+            { "ars technica", "Entertainment" },
+            { "steam", "Entertainment" },
             // electronics
             { "best buy", "Electronics" },
             { "micro center", "Electronics" },
             { "backblaze", "Electronics" },
             { "newegg", "Electronics" },
             { "namecheap", "Electronics" },
+            { "apple store", "Electronics" },
+            // biking
+            { "velosoul", "Biking" },
+            { "roll massif", "Biking" },
             // home improvement
             { "ikea", "Home Improvement" },
             { "cost plus wld", "Home Improvement" },
@@ -124,15 +134,17 @@ namespace MyBudget
             { "uniqlo", "Clothes" },
             { "hautlk rack", "Clothes" },
             { "patagonia", "Clothes" },
-            // cash
-            { "atm", "Cash" },
-            { "venmo", "Cash" },
-            { "apple cash", "Cash" },
             // shopping
             { "ebay", "Shopping" },
             { "fedex", "Shopping" },
             { "qvc", "Shopping" },
-            { "fancy tiger", "Shopping" }
+            { "fancy tiger", "Shopping" },
+            // apple
+            { "apple.com", "Apple" },
+            // cash
+            { "atm", "Cash" },
+            { "venmo", "Cash" },
+            { "apple cash", "Cash" }
         };
     }
 }
