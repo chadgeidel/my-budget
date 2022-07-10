@@ -20,7 +20,7 @@ namespace MyBudget
         {
             var monthToImport = (int)importMonth;
             var di = new DirectoryInfo(sourceDir);
-            var monthPattern = $"*{DateTime.Now.Year}-{monthToImport:D2}*";
+            var monthPattern = $"*{DateTime.Now.Year}-{monthToImport:D2}*.csv";
 
             // get all files matching pattern, if no files exist this will exit
             foreach (var file in di.GetFiles(monthPattern))

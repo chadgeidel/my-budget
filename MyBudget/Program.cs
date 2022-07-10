@@ -21,7 +21,7 @@ namespace MyBudget
                 Console.WriteLine($"Importing {month}");
                 bi.ImportFiles(month, readDir);
                 // write individual month
-                bi.WriteToCsv($"{DateTime.Now.Year}-{month}-{DateTime.Now.ToFileTime()}.csv", month);
+                //bi.WriteToCsv($"{DateTime.Now.Year}-{month}-{DateTime.Now.ToFileTime()}.csv", month);
             }
             Console.WriteLine("Finshed importing");
             bi.WriteToCsv($"{DateTime.Now.Year}-cumulative-{DateTime.Now.ToFileTime()}.csv");
