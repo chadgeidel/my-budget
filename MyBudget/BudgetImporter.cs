@@ -25,6 +25,7 @@ namespace MyBudget
             // get all files matching pattern, if no files exist this will exit
             foreach (var file in di.GetFiles(monthPattern))
             {
+                Console.WriteLine($"Importing {importMonth}");
                 switch (file.Name)
                 {
                     case string bhfcuchk when bhfcuchk.Contains("bhfcu checking", StringComparison.OrdinalIgnoreCase):
