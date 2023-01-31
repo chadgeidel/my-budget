@@ -16,16 +16,25 @@ namespace MyBudget
             records = new List<IBankExport>();
         }
 
-        public void ImportFiles(Months importMonth, string sourceDir)
+        public bool ImportFiles(int importYear, Months importMonth, string sourceDir)
         {
             var monthToImport = (int)importMonth;
             var di = new DirectoryInfo(sourceDir);
-            var monthPattern = $"*{DateTime.Now.Year}-{monthToImport:D2}*.csv";
+            var monthPattern = $"*{importYear}-{monthToImport:D2}*.csv";
+            var files = di.GetFiles(monthPattern);
+
+            if (files.Any())
+            {
+                Console.WriteLine($"Importing {importMonth} {importYear}");
+            }
+            else
+            {
+                return false;
+            }
 
             // get all files matching pattern, if no files exist this will exit
-            foreach (var file in di.GetFiles(monthPattern))
+            foreach (var file in files )
             {
-                Console.WriteLine($"Importing {importMonth}");
                 switch (file.Name)
                 {
                     case string bhfcuchk when bhfcuchk.Contains("bhfcu checking", StringComparison.OrdinalIgnoreCase):
@@ -45,6 +54,8 @@ namespace MyBudget
                         break;
                 }
             }
+
+            return true;
         }
 
         public void WriteToCsv(string filename)
