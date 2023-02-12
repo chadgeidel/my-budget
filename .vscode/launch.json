@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/MyBudget/bin/Debug/net5.0/MyBudget.dll",
+            "program": "${workspaceFolder}/MyBudget/bin/Debug/net7.0/MyBudget.dll",
             "args": [],
             "cwd": "${workspaceFolder}/MyBudget",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
